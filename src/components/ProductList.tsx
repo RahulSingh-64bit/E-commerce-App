@@ -1,11 +1,14 @@
 // temporary
 
-import { ProductsType } from "@/types"
+import { ProductsType } from "@/types";
 import ProductCard from "./ProductCard";
 import Categories from "./Categories";
+import Link from "next/link";
+import Filter from "./Filter";
 
-const products : ProductsType = [
-    {
+//TEMPORARY
+const products: ProductsType = [
+  {
     id: 1,
     name: "Adidas CoreFit T-Shirt",
     shortDescription:
@@ -115,20 +118,22 @@ const products : ProductsType = [
   },
 ];
 
-const ProductList = () => {
+const ProductList = ({category, params}: {category:string, params:"homepage" | "products"}) => {
   return (
     <div className="w-full ">
       <Categories />
+      {params === "products" && <Filter/> }
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12 ">
-      {products.map((product) =>(
-        <ProductCard key={product.id} product={product}/>
-        
-      ) )} 
-    
-    
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
-    </div>
-  )
-}
+        <Link href={category ? `/products/?category=${category}`:"/products"}
+        className="flex justify-end mt-4 text-sm underline text-gray-400"
+        >View all products</Link>
 
-export default ProductList
+    </div>
+  );
+};
+
+export default ProductList;
