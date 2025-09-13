@@ -13,7 +13,7 @@ const Footer = () => {
             height={36}
             className="w-6 h-6 md:w-9 md:h-9"
           />
-          <p className=" hidden p-2 md:block text-sm font-medium text-white tracking-wider">TRENDLOOM</p>
+          <p className=" hidden p-2 md:block text-lg font-medium text-white tracking-wider trendloom-font">TRENDLOOM</p>
         </Link>
         <p className="text-xs text-gray-400">© 2025 TRENDLOOM</p>
         <p className="text-xs text-gray-400">All rights reserved.</p>

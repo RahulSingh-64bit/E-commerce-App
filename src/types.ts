@@ -1,4 +1,4 @@
-import { exitCode } from "process";
+import {email, z} from "zod";
 
 export type ProductType ={
     id: string | number ;
@@ -18,7 +18,17 @@ export type ProductsType = ProductType[];
 export type CartItemType = ProductType & {
     quantity: number;
     selectedSize: string;
-    selectedColor: String;
-}
+    selectedColor: string;
+};
 
 export type CartItemsType = CartItemType[];
+
+export const shippingFormSchema = z.object({
+    name: z.string().min(1,"Name is required!"),
+    email: z.email().min(1, "Email is required!"),
+    phone: z
+        .string()
+        .min(7, "Phone number must be between 7 and 10 digits!")
+        .max(14, "Phone number must be between 7 and 10 digits!")
+        .regex(/^\d+$/, "Phone number must contain numbers only!"),
+});
