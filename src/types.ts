@@ -1,3 +1,4 @@
+//product type
 import {email, z} from "zod";
 
 export type ProductType ={
@@ -15,6 +16,7 @@ export type ProductType ={
 export type ProductsType = ProductType[];
 
 
+//cart item type
 export type CartItemType = ProductType & {
     quantity: number;
     selectedSize: string;
@@ -23,6 +25,8 @@ export type CartItemType = ProductType & {
 
 export type CartItemsType = CartItemType[];
 
+
+//shipping form schema
 export const shippingFormSchema = z.object({
     name: z.string().min(1,"Name is required!"),
     email: z.email().min(1, "Email is required!"),
@@ -36,3 +40,34 @@ export const shippingFormSchema = z.object({
 });
 
 export type ShippingFormInputs = z.infer<typeof shippingFormSchema>;
+
+
+//payment form Schema
+export const paymentFormSchema = z.object({
+    cardHolder: z.string().min(1,"Card holder is required!"),
+    cardNumber: z.string().min(16, "Card Number is required!").max(16, "Card Number is required!"),
+    expirationDate: z
+        .string()
+       .regex( /^(0[1-9]|1[0-2])\/?([0-9]{2})$/, "Expiration Date must be in MM/YY format!"),
+        cvv:z.string().min(3, "CVV is required!").max(3, "CVV is required!"),
+        
+});
+
+export type PaymentFormInputs = z.infer<typeof paymentFormSchema>;
+
+
+
+//cart store state type
+export type cartStoreStateType = {
+    cart : CartItemsType;
+}
+
+
+//cart store Action type
+export type CartStoreActionsType ={
+    addToCart: (poduct:CartItemType)=> void;
+    removeFromCart: (product:CartItemType) => void;
+    clearCart: () => void ;
+
+}
+

@@ -3,6 +3,7 @@ import { Lobster_Two, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ToastContainer } from "react-toastify";
 
 // Heading font
 const lobsterTwo = Lobster_Two({
@@ -44,6 +45,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </div>
+        <ToastContainer position="bottom-right"/>
       </body>
     </html>
   );
