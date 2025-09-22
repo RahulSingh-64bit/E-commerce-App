@@ -128,7 +128,7 @@ const CartPage = () => {
           {activeStep === 1 ? (
             cart.map((item) => (
               // SINGLE CART ITEM
-              <div className="flex items-center justify-between" key={item.id}>
+              <div className="flex items-center justify-between" key={item.id+item.selectedSize+item.selectedColor}>
                 {/* IMAGE & DETAILS */}
                 <div className="flex gap-8">
                   {/* IMAGE */}
@@ -152,7 +152,7 @@ const CartPage = () => {
                   </div>
                 </div>
                 {/* DELETE BUTTON */}
-                <button className="w-8 h-8 rounded-full bg-red-100 hover:bg-red-200 transition-all duration-300 text-red-400 flex items-center justify-center cursor-pointer">
+                <button onClick={()=>removeFromCart(item)} className="w-8 h-8 rounded-full bg-red-100 hover:bg-red-200 transition-all duration-300 text-red-400 flex items-center justify-center cursor-pointer">
                   <Trash2 className="w-4 h-4" />
                 </button>
               </div>
