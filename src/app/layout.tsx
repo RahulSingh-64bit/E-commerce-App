@@ -20,8 +20,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "E-Commerce App",
-  description: "Modern E-Commerce App",
+  title: "TRENDLOOM - Best Clothes",
+  description: "Trendloom is the best place to buy the best clothes",
 };
 
 export default function RootLayout({

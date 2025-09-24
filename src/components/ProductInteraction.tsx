@@ -1,9 +1,11 @@
 "use client";
 
+import useCartStore from "@/stores/cartStore";
 import { ProductType } from "@/types";
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus, PlusIcon, ShoppingCart } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const ProductInteraction = ({
   product,
@@ -19,6 +21,8 @@ const ProductInteraction = ({
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const [quantity, setQuantity]= useState(1);
+
+    const {addToCart}= useCartStore()
 
   const handleTypeChange = (type:string, value:string)=>{
     const params = new URLSearchParams(searchParams.toString())
@@ -37,6 +41,12 @@ const ProductInteraction = ({
       
     }
 
+  }
+
+  const handleAddToCart = () => {
+    addToCart({...product,quantity,selectedColor,selectedSize});
+
+    toast.success("Product added to cart")
   }
 
   return (
@@ -104,6 +114,10 @@ const ProductInteraction = ({
           </button>
         </div>
       </div>
+
+      {/* BUTTONS */}
+      <button onClick={handleAddToCart} className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-md shadow-lg cursor-pointer text-sm font-medium"> <PlusIcon className="w-4 h-4"/> Add to Cart</button>
+      <button className="flex items-center justify-center gap-2 px-4 py-2 ring-1 ring-gray-400 rounded-md shadow-lg text-gray-800 text-sm font-medium cursor-pointer"> <ShoppingCart className="w-4 h-4"/> Buy this Item</button>
     </div>
   );
 };
