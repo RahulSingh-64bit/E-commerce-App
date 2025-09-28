@@ -26,5 +26,5 @@ A modern, responsive e-commerce web application built with **Next.js 15**, **Tai
 - Add/edit product forms
 - Sidebar navigation with active route highlighting
 
-## 📁 Folder Structure
+
 
