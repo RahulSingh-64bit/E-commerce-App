@@ -20,6 +20,13 @@ A modern, responsive e-commerce web application built with **Next.js 15**, **Tai
 - Cart functionality with persistent state
 - Multi-step checkout form with validation
 
+ 
+### 🧑‍💼 Admin Panel
+- Dashboard overview
+- User and product management tables
+- Add/edit product forms
+- Sidebar navigation with active route highlighting
+
 
 
 
